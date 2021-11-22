@@ -31,9 +31,9 @@ class TopFragment: Fragment() {
 
         // recyclerViewの第１引数に渡す値の作成
         // 現在はテスト用データを使用する
-        val items = listOf(getString(R.string.rvTitleTest))
+        val items = listOf(getString(R.string.rvTitle1))
         // recyclerViewの作成
-        val recyclerViewAdapter = RecyclerViewAdapter(items)
+        val recyclerViewAdapter = RecyclerViewAdapter(items, this)
         binding.rvTop.adapter = recyclerViewAdapter
         binding.rvTop.layoutManager = LinearLayoutManager(activity)
     }

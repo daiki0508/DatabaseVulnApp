@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DatabaseVulnApp</string>
     <string name="rvTitleTest">hogehogeFugaFuga</string>
+    <string name="rvTitle1">SharedPreference</string>
 </resources>
