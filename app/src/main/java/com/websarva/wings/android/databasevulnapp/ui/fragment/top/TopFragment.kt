@@ -30,7 +30,6 @@ class TopFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // recyclerViewの第１引数に渡す値の作成
-        // 現在はテスト用データを使用する
         val items = listOf(getString(R.string.rvTitle1))
         // recyclerViewの作成
         val recyclerViewAdapter = RecyclerViewAdapter(items, this)
