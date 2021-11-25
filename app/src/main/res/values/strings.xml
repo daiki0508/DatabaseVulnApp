@@ -4,4 +4,5 @@
 
     <string name="rvTitleTest">hogehogeFugaFuga</string>
     <string name="rvTitle1">SharedPreference</string>
+    <string name="rvTitle2">Database</string>
 </resources>
