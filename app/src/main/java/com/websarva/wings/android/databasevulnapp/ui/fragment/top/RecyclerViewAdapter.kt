@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.websarva.wings.android.databasevulnapp.R
+import com.websarva.wings.android.databasevulnapp.ui.fragment.database.DatabaseFragment
 import com.websarva.wings.android.databasevulnapp.ui.fragment.sharedpreference.SharedPreferenceFragment
 
 class RecyclerViewAdapter(
@@ -31,7 +32,9 @@ class RecyclerViewAdapter(
                         transaction.replace(R.id.fragment_container, SharedPreferenceFragment()).commit()
                     }
                     1 -> {
-                        TODO("未実装")
+                        val transaction = it.supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
+                        transaction.replace(R.id.fragment_container, DatabaseFragment()).commit()
                     }
                     else -> {
                         Log.e("ERROR", "Invalid Value.")
