@@ -1,5 +1,7 @@
 package com.websarva.wings.android.databasevulnapp.di
 
+import com.websarva.wings.android.databasevulnapp.repository.DatabaseRepository
+import com.websarva.wings.android.databasevulnapp.repository.DatabaseRepositoryClient
 import com.websarva.wings.android.databasevulnapp.repository.SharedPreferenceRepository
 import com.websarva.wings.android.databasevulnapp.repository.SharedPreferenceRepositoryClient
 import dagger.Binds
@@ -14,4 +16,8 @@ abstract class Module {
     @Singleton
     @Binds
     abstract fun bindSharedPreferenceRepository(preferenceRepositoryClient: SharedPreferenceRepositoryClient): SharedPreferenceRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindDatabaseRepository(databaseRepositoryClient: DatabaseRepositoryClient): DatabaseRepository
 }
