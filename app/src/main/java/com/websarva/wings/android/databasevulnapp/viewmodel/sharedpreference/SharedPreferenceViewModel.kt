@@ -32,7 +32,7 @@ class SharedPreferenceViewModel @Inject constructor(
 
     companion object{
         init {
-            System.loadLibrary("main")
+            System.loadLibrary("shared_preference")
         }
     }
 
