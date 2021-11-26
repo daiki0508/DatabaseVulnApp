@@ -43,7 +43,6 @@ class DatabaseFragment: Fragment() {
 
         // userdataの通知
         viewModel.userData.observe(this.viewLifecycleOwner, { userdata ->
-            Log.d("test", "${userdata.name}, ${userdata.password}")
             activity?.let {
                 AlertDialogFragment(
                     binding.edUser.text.toString() == userdata.name && binding.edPass.text.toString() == userdata.password
