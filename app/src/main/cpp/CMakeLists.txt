@@ -10,9 +10,24 @@ add_library(
   # C/C++ソースへの相対パス指定
         main.cpp
 )
-
 target_link_libraries(
         main
+        android
+        log
+)
+
+add_library(
+        # 識別用ライブラリ名を指定
+        database
+
+        # 共有ライブラリとしてビルドさせる
+        SHARED
+
+        # C/C++ソースへの相対パス指定
+        database.cpp
+)
+target_link_libraries(
+        database
         android
         log
 )
