@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">DatabaseVulnApp</string>
-    <string name="tvVersion">Version: v1.0</string>
+    <string name="tvVersion">Version: v1.1</string>
 
     <string name="rvTitleTest">hogehogeFugaFuga</string>
     <string name="rvTitle1">SharedPreference</string>
+    <string name="rvTitle2">Database</string>
 </resources>
