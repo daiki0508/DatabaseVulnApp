@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library(
-  # 識別用ライブラリ名を指定
-  main
+        # 識別用ライブラリ名を指定
+        shared_preference
 
-  # 共有ライブラリとしてビルドさせる
-  SHARED
+        # 共有ライブラリとしてビルドさせる
+        SHARED
 
-  # C/C++ソースへの相対パス指定
-        main.cpp
+        # C/C++ソースへの相対パス指定
+        shared_preference.cpp
 )
 target_link_libraries(
-        main
+        shared_preference
         android
         log
 )
