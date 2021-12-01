@@ -36,6 +36,9 @@ class RecyclerViewAdapter(
                         transaction.setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
                         transaction.replace(R.id.fragment_container, DatabaseFragment()).commit()
                     }
+                    2 -> {
+                        TODO("未実装")
+                    }
                     else -> {
                         Log.e("ERROR", "Invalid Value.")
                         it.finish()
