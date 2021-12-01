@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentRealtimeBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
+import com.websarva.wings.android.databasevulnapp.ui.fragment.sharedpreference.AlertDialogFragment
+import com.websarva.wings.android.databasevulnapp.viewmodel.realtime.RealTimeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +20,8 @@ class RealTimeFragment: Fragment() {
     private var _binding: FragmentRealtimeBinding? = null
     private val binding
     get() = _binding!!
+
+    private val viewModel: RealTimeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,5 +46,19 @@ class RealTimeFragment: Fragment() {
                 }
             }
         }
+
+        // loginボタンタップ時の処理
+        binding.button.setOnClickListener {
+            viewModel.getData()
+        }
+
+        // userのobserver
+        viewModel.user.observe(this.viewLifecycleOwner, { userdata ->
+            activity?.let {
+                AlertDialogFragment(
+                    binding.edUser.text.toString() == userdata.name && binding.edPass.text.toString() == userdata.password
+                ).show(it.supportFragmentManager, "RealTimeDialog")
+            }
+        })
     }
 }
