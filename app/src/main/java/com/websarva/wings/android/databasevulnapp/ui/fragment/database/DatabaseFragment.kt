@@ -2,7 +2,6 @@ package com.websarva.wings.android.databasevulnapp.ui.fragment.database
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentDatabaseBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
-import com.websarva.wings.android.databasevulnapp.ui.fragment.sharedpreference.AlertDialogFragment
+import com.websarva.wings.android.databasevulnapp.ui.fragment.AlertDialogFragment
 import com.websarva.wings.android.databasevulnapp.viewmodel.database.DatabaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

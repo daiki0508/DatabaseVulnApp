@@ -1,4 +1,4 @@
-package com.websarva.wings.android.databasevulnapp.ui.fragment.realtime
+package com.websarva.wings.android.databasevulnapp.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
