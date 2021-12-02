@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentRealtimeBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
-import com.websarva.wings.android.databasevulnapp.ui.fragment.sharedpreference.AlertDialogFragment
+import com.websarva.wings.android.databasevulnapp.ui.fragment.AlertDialogFragment
 import com.websarva.wings.android.databasevulnapp.viewmodel.realtime.RealTimeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

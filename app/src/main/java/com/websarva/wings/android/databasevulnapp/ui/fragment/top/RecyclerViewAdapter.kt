@@ -3,6 +3,8 @@ package com.websarva.wings.android.databasevulnapp.ui.fragment.top
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.ui.fragment.database.DatabaseFragment
@@ -28,19 +30,13 @@ class RecyclerViewAdapter(
             fragment.activity?.let {
                 when(position){
                     0 -> {
-                        val transaction = it.supportFragmentManager.beginTransaction()
-                        transaction.setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
-                        transaction.replace(R.id.fragment_container, SharedPreferenceFragment()).commit()
+                        transaction(it).replace(R.id.fragment_container, SharedPreferenceFragment()).commit()
                     }
                     1 -> {
-                        val transaction = it.supportFragmentManager.beginTransaction()
-                        transaction.setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
-                        transaction.replace(R.id.fragment_container, DatabaseFragment()).commit()
+                        transaction(it).replace(R.id.fragment_container, DatabaseFragment()).commit()
                     }
                     2 -> {
-                        val transaction = it.supportFragmentManager.beginTransaction()
-                        transaction.setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
-                        transaction.replace(R.id.fragment_container, RealTimeFragment()).commit()
+                        transaction(it).replace(R.id.fragment_container, RealTimeFragment()).commit()
                     }
                     else -> {
                         Log.e("ERROR", "Invalid Value.")
@@ -50,6 +46,9 @@ class RecyclerViewAdapter(
             }
         }
     }
+
+    private fun transaction(activity: FragmentActivity): FragmentTransaction = activity.supportFragmentManager.beginTransaction()
+        .setCustomAnimations(R.anim.fragment_up_enter, R.anim.fragment_up_exit)
 
     override fun getItemCount(): Int = items.size
 }
