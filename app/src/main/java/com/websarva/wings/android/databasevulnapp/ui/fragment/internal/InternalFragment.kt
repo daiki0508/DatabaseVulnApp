@@ -1,4 +1,4 @@
-package com.websarva.wings.android.databasevulnapp.ui.fragment.realtime
+package com.websarva.wings.android.databasevulnapp.ui.fragment.internal
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,26 +9,26 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
-import com.websarva.wings.android.databasevulnapp.databinding.FragmentRealtimeBinding
+import com.websarva.wings.android.databasevulnapp.databinding.FragmentInternalBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
 import com.websarva.wings.android.databasevulnapp.ui.fragment.AlertDialogFragment
-import com.websarva.wings.android.databasevulnapp.viewmodel.realtime.RealTimeViewModel
+import com.websarva.wings.android.databasevulnapp.viewmodel.internal.InternalViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RealTimeFragment: Fragment() {
-    private var _binding: FragmentRealtimeBinding? = null
+class InternalFragment: Fragment() {
+    private var _binding: FragmentInternalBinding? = null
     private val binding
     get() = _binding!!
 
-    private val viewModel: RealTimeViewModel by viewModels()
+    private val viewModel: InternalViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRealtimeBinding.inflate(inflater, container, false)
+        _binding = FragmentInternalBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -36,7 +36,7 @@ class RealTimeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // backButtonが押された時
+        // backボタンタップ時の処理
         requireActivity().onBackPressedDispatcher.addCallback(this){
             activity?.let {
                 with(Intent(it, MainActivity::class.java)){
@@ -49,15 +49,15 @@ class RealTimeFragment: Fragment() {
 
         // loginボタンタップ時の処理
         binding.button.setOnClickListener {
-            viewModel.getData()
+            // fileをサーバから取得
+            viewModel.get()
         }
 
-        // userのobserver
         viewModel.user.observe(this.viewLifecycleOwner, { userdata ->
             activity?.let {
                 AlertDialogFragment(
                     binding.edUser.text.toString() == userdata.name && binding.edPass.text.toString() == userdata.password
-                ).show(it.supportFragmentManager, "RealTimeDialog")
+                ).show(it.supportFragmentManager, "InternalDialog")
             }
         })
     }
