@@ -23,11 +23,11 @@ class FirebaseStorageRepositoryClient @Inject constructor(): FirebaseStorageRepo
         val userFile = File(context.filesDir, "users")
         // fileの存在チェック
         if (userFile.exists()){
-            listener(Gson().fromJson(File(context.filesDir, "users").bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
+            listener(Gson().fromJson(userFile.bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
         }else{
-            usersRef.getFile(File(context.filesDir, "users")).addOnSuccessListener {
+            usersRef.getFile(userFile).addOnSuccessListener {
                 Log.i("FirebaseStorage", "Success!")
-                listener(Gson().fromJson(File(context.filesDir, "users").bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
+                listener(Gson().fromJson(userFile.bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
             }.addOnFailureListener {
                 Log.e("ERROR", "CANNOT GET FILE.", it)
                 listener(null)
