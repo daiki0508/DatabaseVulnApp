@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 interface FirebaseStorageRepository {
     suspend fun get(context: Context, listener: (result: Users?) -> Unit)
+    suspend fun getEx(context: Context, listener: (result: Users?) -> Unit)
 }
 
 class FirebaseStorageRepositoryClient @Inject constructor(): FirebaseStorageRepository {
@@ -27,6 +28,25 @@ class FirebaseStorageRepositoryClient @Inject constructor(): FirebaseStorageRepo
             usersRef.getFile(File(context.filesDir, "users")).addOnSuccessListener {
                 Log.i("FirebaseStorage", "Success!")
                 listener(Gson().fromJson(File(context.filesDir, "users").bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
+            }.addOnFailureListener {
+                Log.e("ERROR", "CANNOT GET FILE.", it)
+                listener(null)
+            }
+        }
+    }
+
+    override suspend fun getEx(context: Context, listener: (result: Users?) -> Unit) {
+        // referenceを参照
+        val usersRef = Firebase.storage.reference.child("users/personaldataex")
+
+        val userExFile = File(context.getExternalFilesDir(null), "usersex")
+        // fileの存在チェック
+        if (userExFile.exists()){
+            listener(Gson().fromJson(userExFile.bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
+        }else{
+            usersRef.getFile(userExFile).addOnSuccessListener {
+                Log.i("FirebaseStorage", "Success!")
+                listener(Gson().fromJson(userExFile.bufferedReader().use(BufferedReader::readText), Users::class.java) as Users)
             }.addOnFailureListener {
                 Log.e("ERROR", "CANNOT GET FILE.", it)
                 listener(null)
