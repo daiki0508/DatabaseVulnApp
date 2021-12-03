@@ -7,14 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentInternalBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
+import com.websarva.wings.android.databasevulnapp.ui.fragment.AlertDialogFragment
+import com.websarva.wings.android.databasevulnapp.viewmodel.internal.InternalViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InternalFragment: Fragment() {
     private var _binding: FragmentInternalBinding? = null
     private val binding
     get() = _binding!!
+
+    private val viewModel: InternalViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +46,20 @@ class InternalFragment: Fragment() {
                 }
             }
         }
+
+        // loginボタンタップ時の処理
+        binding.button.setOnClickListener {
+            // fileをサーバから取得
+            viewModel.get()
+        }
+
+        viewModel.user.observe(this.viewLifecycleOwner, { userdata ->
+            activity?.let {
+                AlertDialogFragment(
+                    binding.edUser.text.toString() == userdata.name && binding.edPass.text.toString() == userdata.password
+                ).show(it.supportFragmentManager, "InternalDialog")
+            }
+        })
     }
 
     override fun onDestroyView() {
