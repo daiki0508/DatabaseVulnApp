@@ -61,4 +61,10 @@ class RealTimeFragment: Fragment() {
             }
         })
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        _binding = null
+    }
 }
