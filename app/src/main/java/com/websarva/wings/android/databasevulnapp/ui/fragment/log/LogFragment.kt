@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentLogBinding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
+import com.websarva.wings.android.databasevulnapp.ui.fragment.AlertDialogFragment
+import com.websarva.wings.android.databasevulnapp.viewmodel.log.LogViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +20,8 @@ class LogFragment: Fragment() {
     private var _binding: FragmentLogBinding? = null
     private val binding
     get() = _binding!!
+
+    private val viewModel: LogViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +46,18 @@ class LogFragment: Fragment() {
                 }
             }
         }
+
+        // loginボタンタップ時の処理
+        binding.button.setOnClickListener {
+            viewModel.decrypt()
+        }
+
+        // usersの通知
+        viewModel.userData.observe(this.viewLifecycleOwner, { userdata ->
+            activity?.let {
+                AlertDialogFragment(binding.edText.text.toString() == userdata.password).show(it.supportFragmentManager, "LogDialog")
+            }
+        })
     }
 
     override fun onDestroyView() {
