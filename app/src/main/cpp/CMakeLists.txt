@@ -31,3 +31,19 @@ target_link_libraries(
         android
         log
 )
+
+add_library(
+        # 識別用ライブラリ名を指定
+        Log
+
+        # 共有ライブラリとしてビルドさせる
+        SHARED
+
+        # C/C++ソースへの相対パス指定
+        log.cpp
+)
+target_link_libraries(
+        Log
+        android
+        log
+)
