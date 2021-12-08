@@ -9,4 +9,5 @@
     <string name="rvTitle4">InternalStorage</string>
     <string name="rvTitle5">ExternalStorage</string>
     <string name="rvTitle6">Log</string>
+    <string name="rvTitle7">ContentProvider01</string>
 </resources>

@@ -50,6 +50,9 @@ class RecyclerViewAdapter(
                     5 -> {
                         transaction(it).replace(R.id.fragment_container, LogFragment()).commit()
                     }
+                    6 -> {
+                        TODO("未実装")
+                    }
                     else -> {
                         Log.e("ERROR", "Invalid Value.")
                         it.finish()
