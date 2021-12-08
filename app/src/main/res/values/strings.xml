@@ -10,4 +10,6 @@
     <string name="rvTitle5">ExternalStorage</string>
     <string name="rvTitle6">Log</string>
     <string name="rvTitle7">ContentProvider01</string>
+
+    <string name="tvContentProvider01Description">既にhoge.dbというファイルが作成されています\n他のアプリからこのdbの内容を取得してください</string>
 </resources>
