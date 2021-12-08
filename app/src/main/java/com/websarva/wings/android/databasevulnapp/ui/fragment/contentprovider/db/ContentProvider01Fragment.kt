@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.databinding.FragmentContentprovider01Binding
 import com.websarva.wings.android.databasevulnapp.ui.MainActivity
+import com.websarva.wings.android.databasevulnapp.viewmodel.contentprovider.db.ContentProvider01ViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +19,8 @@ class ContentProvider01Fragment: Fragment() {
     private var _binding:FragmentContentprovider01Binding? = null
     private val binding
     get() = _binding!!
+
+    private val viewModel: ContentProvider01ViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +45,9 @@ class ContentProvider01Fragment: Fragment() {
                 }
             }
         }
+
+        // db作成
+        viewModel.insert()
     }
 
     override fun onDestroyView() {
