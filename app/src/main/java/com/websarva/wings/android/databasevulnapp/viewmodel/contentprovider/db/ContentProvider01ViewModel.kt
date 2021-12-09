@@ -16,7 +16,7 @@ class ContentProvider01ViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
     fun insert(){
-        if (!File("${getApplication<Application>().applicationContext.filesDir}../databases/content_provider01.db").exists()){
+        if (!File("${getApplication<Application>().applicationContext.filesDir}/../databases/content_provider01.db").exists()){
             viewModelScope.launch {
                 contentProviderRepository.insert(getApplication<Application>().applicationContext)
             }
