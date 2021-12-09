@@ -25,4 +25,8 @@ abstract class Module {
     @Singleton
     @Binds
     abstract fun bindFirebaseStorageRepository(firebaseStorageRepositoryClient: FirebaseStorageRepositoryClient): FirebaseStorageRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindContentProviderRepository(contentProviderRepositoryClient: ContentProviderRepositoryClient): ContentProviderRepository
 }
