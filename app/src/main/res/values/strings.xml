@@ -13,4 +13,5 @@
     <string name="rvTitle8">ContentProvider02</string>
 
     <string name="tvContentProvider01Description">既にcontent_provider01.dbというファイルが作成されています\n他のアプリからこのdbの内容を取得してください</string>
+    <string name="tvContentProvider02Description">assets内のファイルであるload_urlを他アプリ内から取得してください</string>
 </resources>

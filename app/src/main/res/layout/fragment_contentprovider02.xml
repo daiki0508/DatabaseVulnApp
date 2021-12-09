@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="assets内のファイルであるhogeを他アプリ内から取得してください"
+        android:text="@string/tvContentProvider02Description"
         android:textSize="18sp"
         android:gravity="center" />
 </androidx.constraintlayout.widget.ConstraintLayout>

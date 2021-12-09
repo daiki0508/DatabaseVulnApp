@@ -40,6 +40,9 @@ android {
             path "src/main/cpp/CMakeLists.txt"
         }
     }
+    aaptOptions {
+        noCompress "load_url"
+    }
 }
 
 kapt {
