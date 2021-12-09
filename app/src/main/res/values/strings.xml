@@ -10,6 +10,7 @@
     <string name="rvTitle5">ExternalStorage</string>
     <string name="rvTitle6">Log</string>
     <string name="rvTitle7">ContentProvider01</string>
+    <string name="rvTitle8">ContentProvider02</string>
 
     <string name="tvContentProvider01Description">既にcontent_provider01.dbというファイルが作成されています\n他のアプリからこのdbの内容を取得してください</string>
 </resources>
