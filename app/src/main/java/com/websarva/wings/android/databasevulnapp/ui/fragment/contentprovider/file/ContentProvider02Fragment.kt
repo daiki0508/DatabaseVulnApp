@@ -47,7 +47,7 @@ class ContentProvider02Fragment: Fragment() {
         }
 
         // load_url内のurlを取得
-        viewModel.getAssetsFile()
+        viewModel.openFile()
     }
 
     override fun onDestroyView() {

@@ -6,7 +6,9 @@ import android.content.UriMatcher
 import android.content.res.AssetFileDescriptor
 import android.database.Cursor
 import android.net.Uri
+import android.os.ParcelFileDescriptor
 import android.util.Log
+import java.io.File
 import java.io.FileNotFoundException
 
 class ContentProvider02: ContentProvider() {
@@ -22,11 +24,10 @@ class ContentProvider02: ContentProvider() {
         return false
     }
 
-    override fun openAssetFile(uri: Uri, mode: String): AssetFileDescriptor? {
-        // ファイルの取得
+    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
         return try {
-            context!!.assets.openFd(uri.pathSegments.joinToString("/"))
-        }catch (e: FileNotFoundException){
+            ParcelFileDescriptor.open(File(uri.path!!), ParcelFileDescriptor.MODE_READ_ONLY)
+        } catch (e: FileNotFoundException){
             Log.e("ERROR", "Unable to open file: ${e.message}")
             null
         }
