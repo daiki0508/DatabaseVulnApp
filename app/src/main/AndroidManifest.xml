@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.websarva.wings.android.databasevulnapp.ui.fragment.contentprovider.db.ContentProvider01"
+            android:name=".ui.fragment.contentprovider.db.ContentProvider01"
+            android:exported="true" />
+        <provider
+            android:authorities="com.websarva.wings.android.databasevulnapp.ui.fragment.contentprovider.file.ContentProvider02"
+            android:name=".ui.fragment.contentprovider.file.ContentProvider02"
+            android:exported="true" />
     </application>
 
 </manifest>
