@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.websarva.wings.android.databasevulnapp.R
 import com.websarva.wings.android.databasevulnapp.ui.fragment.contentprovider.db.ContentProvider01Fragment
+import com.websarva.wings.android.databasevulnapp.ui.fragment.contentprovider.file.ContentProvider02Fragment
 import com.websarva.wings.android.databasevulnapp.ui.fragment.database.DatabaseFragment
 import com.websarva.wings.android.databasevulnapp.ui.fragment.external.ExternalFragment
 import com.websarva.wings.android.databasevulnapp.ui.fragment.internal.InternalFragment
@@ -53,6 +54,9 @@ class RecyclerViewAdapter(
                     }
                     6 -> {
                         transaction(it).replace(R.id.fragment_container, ContentProvider01Fragment()).commit()
+                    }
+                    7 -> {
+                        transaction(it).replace(R.id.fragment_container, ContentProvider02Fragment()).commit()
                     }
                     else -> {
                         Log.e("ERROR", "Invalid Value.")

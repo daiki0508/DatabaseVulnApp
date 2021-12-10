@@ -13,6 +13,7 @@ import javax.inject.Inject
 interface FirebaseStorageRepository {
     suspend fun get(context: Context, listener: (result: Users?) -> Unit)
     suspend fun getEx(context: Context, listener: (result: Users?) -> Unit)
+    suspend fun getUrlFile(context: Context, listener: (result: Boolean) -> Unit)
 }
 
 class FirebaseStorageRepositoryClient @Inject constructor(): FirebaseStorageRepository {
@@ -50,6 +51,25 @@ class FirebaseStorageRepositoryClient @Inject constructor(): FirebaseStorageRepo
             }.addOnFailureListener {
                 Log.e("ERROR", "CANNOT GET FILE.", it)
                 listener(null)
+            }
+        }
+    }
+
+    override suspend fun getUrlFile(context: Context, listener: (result: Boolean) -> Unit) {
+        // referenceを参照
+        val urlsRef = Firebase.storage.reference.child("url/load_url")
+
+        val urlsFile = File(context.filesDir, "load_url")
+        // fileの存在チェック
+        if (urlsFile.exists()){
+            listener(true)
+        }else{
+            urlsRef.getFile(urlsFile).addOnSuccessListener {
+                Log.i("FirebaseStorage", "Success!")
+                listener(true)
+            }.addOnFailureListener{
+                Log.e("ERROR", "CANNOT GET FILE.", it)
+                listener(false)
             }
         }
     }
